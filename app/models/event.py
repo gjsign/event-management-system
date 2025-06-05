@@ -5,7 +5,7 @@ from app.core.database import Base
 
 class Event(Base):
     __tablename__ = "event"
-    
+
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
     location = Column(String, nullable=False)
@@ -13,3 +13,5 @@ class Event(Base):
     end_time = Column(DateTime, nullable=False)
     max_capacity = Column(Integer, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+    registrations = relationship("EventAttendee", back_populates="event", cascade="all, delete-orphan")
