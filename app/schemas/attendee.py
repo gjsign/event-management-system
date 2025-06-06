@@ -7,5 +7,3 @@ class AttendeeCreate(BaseModel):
 
 class AttendeeOut(AttendeeCreate):
     id: int
-    name: str
-    email: EmailStr
