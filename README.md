@@ -43,6 +43,36 @@ Then open your browser at: http://127.0.0.1:8000/docs
 🧪 Run Tests
 pytest
 
+📐 Table Structure
+CREATE TABLE event (
+	id INTEGER NOT NULL, 
+	name VARCHAR NOT NULL, 
+	location VARCHAR NOT NULL, 
+	start_time DATETIME NOT NULL, 
+	end_time DATETIME NOT NULL, 
+	max_capacity INTEGER NOT NULL, 
+	created_at DATETIME, 
+	PRIMARY KEY (id)
+);
+CREATE INDEX ix_event_id ON event (id);
+CREATE TABLE attendee (
+	id INTEGER NOT NULL, 
+	name VARCHAR NOT NULL, 
+	email VARCHAR NOT NULL, 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+);
+CREATE INDEX ix_attendee_id ON attendee (id);
+CREATE TABLE event_attendee (
+	id INTEGER NOT NULL, 
+	event_id INTEGER NOT NULL, 
+	attendee_id INTEGER NOT NULL, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(event_id) REFERENCES event (id), 
+	FOREIGN KEY(attendee_id) REFERENCES attendee (id)
+);
+CREATE INDEX ix_event_attendee_id ON event_attendee (id);
+
 🔁 Example API Usage
 📌 1. Create Event
 curl --location 'http://127.0.0.1:8000/events/' \

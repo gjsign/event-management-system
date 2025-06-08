@@ -11,6 +11,3 @@ class EventCreate(BaseModel):
 class EventOut(EventCreate):
     id: int
     created_at: datetime
-
-    # class Config:
-        # orm_mode = True
