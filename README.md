@@ -64,26 +64,33 @@ pytest
 
 🔁 Example API Usage
 📌 1. Create Event
-curl -X POST "http://localhost:8000/events/" \
--H "Content-Type: application/json" \
--d '{
-  "title": "Sample Event",
-  "description": "This is a test event.",
-  "start_time": "2025-06-10T10:00:00",
-  "end_time": "2025-06-10T12:00:00",
-  "location": "Bangalore"
+curl --location 'http://127.0.0.1:8000/events/' \
+--header 'Content-Type: application/json' \
+--data '{
+    "name": "World Chess Championship",
+    "location": "New York Convention Center",
+    "start_time": "2025-07-15T14:30:00+05:30",
+    "end_time": "2025-07-15T22:30:00+05:30",
+    "max_capacity": 2
 }'
 
 📌 2. List Events
-curl -X GET "http://localhost:8000/events/?user_timezone=Asia/Kolkata" -H "accept: application/json"
+curl --location --request GET 'http://127.0.0.1:8000/events/1/attendees' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "Alice Johnson",
+  "email": "alice@example.com"
+}
+'
 
 📌 3. Register Attendee
-curl -X POST "http://localhost:8000/events/1/register" \
--H "Content-Type: application/json" \
--d '{
-  "name": "John Doe",
-  "email": "john@example.com"
-}'
+curl --location 'http://127.0.0.1:8000/events/2/register' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "name": "nodirbek3",
+  "email": "nodirbek3@gmail.com"
+}
+'
 
 📌 4. List Attendees of an Event
 curl -X GET "http://localhost:8000/events/1/attendees?skip=0&limit=10" \
