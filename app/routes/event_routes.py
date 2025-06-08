@@ -31,5 +31,8 @@ def register(event_id: int = Path(..., gt=0), attendee: AttendeeCreate = ..., db
     return register_attendee(db, event_id, attendee)
 
 @router.get("/{event_id}/attendees", response_model=list[AttendeeOut])
-def list_attendees(event_id: int = Path(..., gt=0), db: Session = Depends(get_db)):
-    return get_event_attendees(db, event_id)
+def list_attendees(event_id: int = Path(..., gt=0), 
+                   skip: int = Query(0, ge=0),
+                   limit: int = Query(10, le=100),
+                   db: Session = Depends(get_db)):
+    return get_event_attendees(db, event_id, skip=skip, limit=limit)
