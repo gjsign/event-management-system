@@ -21,25 +21,6 @@ A lightweight and efficient API to create events, register attendees, and manage
 - **SQLite** – Lightweight DB
 - **Pydantic** – Data validation
 - **Pytest** – Unit testing
-
----
-
-## 📁 Project Structure
-event_management_system/
-├── app/
-│ ├── main.py
-│ ├── models/
-│ ├── schemas/
-│ ├── controllers/
-│ ├── routes/
-│ └── core/
-├── tests/
-│ ├── test_events.py
-│ ├── test_attendees.py
-│ ├── conftest.py
-│ └── base.py
-├── requirements.txt
-└── README.md
 ---
 
 ## 🛠️ Installation
